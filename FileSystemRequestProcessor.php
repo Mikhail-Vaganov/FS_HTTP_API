@@ -82,7 +82,25 @@ class FileSystemRequestProcessor extends RequestProcessor implements iRestReques
 
     public function put()
     {
-        // TODO: Implement put() method.
+        $url = $_SERVER['REQUEST_URI'];
+        $parts = parse_url($url);
+        parse_str($parts['query'], $query);
+        if(isset($query['file_name'])) {
+            $putdata = fopen("php://input", "r");
+
+            /* Open a file for writing */
+            $uploadfile = WORKING_FOLDER.DIRECTORY_SEPARATOR.$query['file_name'];
+            $fp = fopen($uploadfile, "w");
+
+            /* Read the data 1 KB at a time
+               and write to the file */
+            while ($data = fread($putdata, 1024))
+                fwrite($fp, $data);
+
+            /* Close the streams */
+            fclose($fp);
+            fclose($putdata);
+        }
     }
 
     public function delete()
@@ -101,7 +119,6 @@ class FileSystemRequestProcessor extends RequestProcessor implements iRestReques
             else
                 $filesToAnswer[] = $file;
 
-        $filesToAnswer;
         $this->SendResponse($filesToAnswer);
     }
 
