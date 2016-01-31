@@ -12,6 +12,7 @@ require_once 'Classes'.DIRECTORY_SEPARATOR.'RequestProcessor.php';
 require_once 'Classes'.DIRECTORY_SEPARATOR.'FileSystemRequestSellector.php';
 require_once 'Classes'.DIRECTORY_SEPARATOR.'FileSystemRequestProcessor.php';
 require_once 'Classes'.DIRECTORY_SEPARATOR.'RootRequestProcessor.php';
+require_once 'Classes'.DIRECTORY_SEPARATOR.'FsapiException.php';
 
 define('WORKING_FOLDER', 'c:'.DIRECTORY_SEPARATOR.'local_store');
 
@@ -39,6 +40,7 @@ function NewFilePathIfFileExists($filePath)
     else
     {
         $name = $filename;
+        $ext="";
     }
 
     $dirPath= dirname($filePath);
@@ -47,7 +49,7 @@ function NewFilePathIfFileExists($filePath)
     $counter = 1;
     while (file_exists($newpath))
     {
-        $newname = $name .'('. $counter.')'.$ext??"";
+        $newname = $name .'('. $counter.')'.$ext;
         $newpath = $dirPath.DIRECTORY_SEPARATOR.$newname;
         $counter++;
     }
