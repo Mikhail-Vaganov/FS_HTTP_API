@@ -1,0 +1,14 @@
+{
+  "name": "Vaganov/fsapi",
+  "description": "test_task",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Mikhail Vaganov",
+      "email": "mikhail.vaganov.sci@gmail.com"
+    }
+  ],
+  "require": {
+  }
+}

@@ -32,21 +32,33 @@ class FileSystemRequestProcessor extends RequestProcessor implements iRestReques
 
         if(count($_FILES)==0)
         {
-            $file_path = $this->TryCreateNewFilePath($file_path, $autorename);
+            $file_path = $this->ValidateFilePath($file_path, $autorename);
+            $this->CreateSingleFileFromInputStream($file_path);
+            $this->SendMessageAboutFileCreation($file_path, $parts['path']);
+            return;
+        }
 
-            return $this->CreateSingleFileFromInputStream($file_path);
+        if(count($_FILES)==1)
+        {
+            $fileData = array_values($_FILES)[0];
+            $file_path = $this->ValidateFilePath($file_path, $autorename);
+            $this->CreateSingleFile($fileData, $file_path);
+            $this->SendMessageAboutFileCreation($file_path, $parts['path']);
+            return;
         }
 
         if(count($_FILES)>1 && !$autorename)
             throw new FsapiException("More than one file are tried to be created under the same name. Consider autorename flag triggering or submit just one file to be created.", 400, null, $this->http_method,$this->url);
-        else
+        elseif (count($_FILES)>1 && $autorename)
         {
+            $metadata=Array();
             foreach ($_FILES as $file => $fileData)
             {
-                $file_path = $this->TryCreateNewFilePath($file_path, $autorename);
-
+                $file_path = $this->ValidateFilePath($file_path, $autorename);
                 $this->CreateSingleFile($fileData, $file_path);
+                $metadata = new FileMetaData($file_path);
             }
+            $this->SendResponse($metadata);
         }
 
         return;
@@ -79,6 +91,7 @@ class FileSystemRequestProcessor extends RequestProcessor implements iRestReques
         $file_path=GetFilePathInWorkingDir($file_name);
 
         $this->CreateSingleFileFromInputStream($file_path);
+        $this->SendMessageAboutFileCreation($file_path, $parts['path']);
     }
 
     public function delete()
@@ -142,13 +155,7 @@ class FileSystemRequestProcessor extends RequestProcessor implements iRestReques
 
         $file_path = GetFilePathInWorkingDir($file_name);
 
-        if (move_uploaded_file($fileData['tmp_name'], $file_path))
-        {
-            header("Location: ".$this->url);
-            http_response_code(201);
-            $this->SendResponse(new FileMetaData($file_path));
-        }
-        else
+        if (!move_uploaded_file($fileData['tmp_name'], $file_path))
             throw new FsapiException("Failed to move uploaded file.", 500, $file_name, $this->http_method,$this->url);
     }
 
@@ -156,7 +163,8 @@ class FileSystemRequestProcessor extends RequestProcessor implements iRestReques
     {
         $file_name = basename($file_path);
         $fp = fopen($file_path, "w");
-        if (flock($fp, LOCK_EX)) {
+        if (flock($fp, LOCK_EX))
+        {
             $putdata = fopen("php://input", "r");
 
             while ($data = fread($putdata, 1024))
@@ -168,11 +176,9 @@ class FileSystemRequestProcessor extends RequestProcessor implements iRestReques
             touch($file_path);
         } else
             throw new FsapiException("Couldn't lock the file before update", 500, $file_name, $this->http_method, $this->url);
-
-        $this->SendResponse(new FileMetaData($file_path));
     }
 
-    private function TryCreateNewFilePath($file_path, $autorename)
+    private function ValidateFilePath($file_path, $autorename)
     {
         $file_name=basename($file_path);
         if (file_exists($file_path) && !$autorename)
@@ -181,5 +187,12 @@ class FileSystemRequestProcessor extends RequestProcessor implements iRestReques
             $file_path = NewFilePathIfFileExists($file_path);
 
         return $file_path;
+    }
+
+    private function SendMessageAboutFileCreation($file_path, $external_path)
+    {
+        header("Location: ".$external_path);
+        http_response_code(201);
+        $this->SendResponse(new FileMetaData($file_path));
     }
 }

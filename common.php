@@ -6,6 +6,8 @@
  * Time: 22:33
  */
 
+include_once 'configuration.php';
+
 require_once 'Interfaces'.DIRECTORY_SEPARATOR.'iRestRequestProcessor.php';
 require_once 'Interfaces'.DIRECTORY_SEPARATOR.'iRestRequestProcessorSelector.php';
 require_once 'Classes'.DIRECTORY_SEPARATOR.'RequestProcessor.php';
@@ -14,11 +16,53 @@ require_once 'Classes'.DIRECTORY_SEPARATOR.'FileSystemRequestProcessor.php';
 require_once 'Classes'.DIRECTORY_SEPARATOR.'RootRequestProcessor.php';
 require_once 'Classes'.DIRECTORY_SEPARATOR.'FsapiException.php';
 
-define('WORKING_FOLDER', 'c:'.DIRECTORY_SEPARATOR.'local_store');
 
-function exceptionErrorHandler($errNumber, $errStr, $errFile, $errLine )
+spl_autoload_extensions(".php");
+spl_autoload_register();
+set_error_handler('ExceptionErrorHandler');
+register_shutdown_function( "fatal_handler" );
+
+function fatal_handler()
+{
+    $errfile = "unknown file";
+    $errstr  = "shutdown";
+    $errno   = E_CORE_ERROR;
+    $errline = 0;
+
+    $error = error_get_last();
+
+    if( $error !== NULL)
+    {
+        $errno   = $error["type"];
+        $errfile = $error["file"];
+        $errline = $error["line"];
+        $errstr  = $error["message"];
+    }
+    error_log($errstr);
+    error_log($errno);
+    error_log($errfile);
+    error_log($errline);
+}
+
+function ExceptionErrorHandler($errNumber, $errStr, $errFile, $errLine )
 {
     throw new ErrorException($errStr, 500, $errNumber, $errFile, $errLine);
+}
+
+function SendError (Exception $exception)
+{
+    header('Content-type: application/json');
+    if(is_a($exception,"FsapiException"))
+    {
+        http_response_code($exception->getCode());
+        echo json_encode($exception, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+    }
+    else
+    {
+        $fsapiEx=new FsapiException($exception->getMessage(), 500, null, $_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
+        http_response_code($fsapiEx->getCode());
+        echo json_encode($fsapiEx,JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+    }
 }
 
 function HumanFilesize($bytes, int $decimals = 2)
