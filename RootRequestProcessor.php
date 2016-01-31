@@ -20,26 +20,15 @@ class RootRequestProcessor
     public function ProcessRequest()
     {
         $method = $_SERVER['REQUEST_METHOD'];
-        //echo "_SERVER['REQUEST_URI']".$_SERVER['REQUEST_URI']."<br/>";
 
         $restRequestProcessor = $this->_restRequestProcessorSelector->GetAppropriateRequestProcessor();
 
         switch ($method) {
-            case 'PUT':
-                $result=$restRequestProcessor->put();
-                break;
-            case 'POST':
-                $result=$restRequestProcessor->post();
-                break;
-            case 'GET':
-                $result=$restRequestProcessor->get();
-                break;
-            case 'DELETE':
-                $result=$restRequestProcessor->delete();
-                break;
-            default:
-                $result="Incorrect request";
-                break;
+            case 'PUT': return $restRequestProcessor->put();
+            case 'POST':return $restRequestProcessor->post();
+            case 'GET': return $restRequestProcessor->get();
+            case 'DELETE': return $restRequestProcessor->delete();
+            default: throw new FsapiException('Wrong HTTP method',400,null,null,$_SERVER['REQUEST_URI']);
         }
     }
 }

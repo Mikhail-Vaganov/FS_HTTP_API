@@ -24,7 +24,7 @@ class FileSystemRequestSellector implements iRestRequestProcessorSelector
         {
             case ('files') : return new FileSystemRequestProcessor();
             case ('metadata') : return new FileMetadataRequestProcessor();
-            default: throw new Exception('Неверный формат запроса.');
+            default: throw new FsapiException('Wrong resource name',400,null,null,$url);
         }
     }
 }
