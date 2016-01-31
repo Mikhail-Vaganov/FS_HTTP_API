@@ -6,12 +6,12 @@
  * Time: 22:33
  */
 
-require_once 'iRestRequestProcessor.php';
-require_once 'iRestRequestProcessorSelector.php';
-require_once 'RequestProcessor.php';
-require_once 'FileSystemRequestSellector.php';
-require_once 'FileSystemRequestProcessor.php';
-require_once 'RootRequestProcessor.php';
+require_once 'Interfaces'.DIRECTORY_SEPARATOR.'iRestRequestProcessor.php';
+require_once 'Interfaces'.DIRECTORY_SEPARATOR.'iRestRequestProcessorSelector.php';
+require_once 'Classes'.DIRECTORY_SEPARATOR.'RequestProcessor.php';
+require_once 'Classes'.DIRECTORY_SEPARATOR.'FileSystemRequestSellector.php';
+require_once 'Classes'.DIRECTORY_SEPARATOR.'FileSystemRequestProcessor.php';
+require_once 'Classes'.DIRECTORY_SEPARATOR.'RootRequestProcessor.php';
 
 define('WORKING_FOLDER', 'c:'.DIRECTORY_SEPARATOR.'local_store');
 
