@@ -71,6 +71,35 @@ http://\<server_host\>:\<server_port\>/fsapi/metadata/\<file_name\>
   * Method: GET
   * Returns: The specified file's metadata. The metadata of images has additional fields like width and height, etc.
 
+An example of a metadata JSON response:
+```
+{
+    "size": "192.69KB",
+    "bytes": 197312,
+    "modified": "Sunday 2nd of August 2015 12:26:21 PM",
+    "path": "local_store\\image.jpg",
+    "name": "image.jpg",
+    "extension": "JPG",
+    "mimetype": "image/jpeg",
+    "height": 915,
+    "width": 855
+}
+```
+This is the standard unit answer to any **metadata** request. 
+
+The basic fields are:
+- **size** - the user-friendly size of the file;
+- **bytes** - size of the files in bytes;
+- **modified** -  the file modifyed date;
+- **path** - the path to the file resource;
+- **name** - the name of the requested file;
+- **extension** - the extension of the requested file;
+- **mimetype** - MIME type of the file's content
+
+Additional fields for imapges are:
+- **height** - the height of the requested image
+- **width** - the width of the requested image
+
 ## Exception messages
 If there is an exception, the approptiate HTTP code will be set up in HTTP response.
 The body of such response will contain serialized exception, e.g. in response to the reading metadata of a non-existent file:
@@ -84,9 +113,9 @@ The body of such response will contain serialized exception, e.g. in response to
 }
 ```
 This is the standard error answer to any failed request. The fields are:
-- **errorMessage** - the short report about the error occurred
-- **code** - matches the HTTP response code number
-- **requestedFile** -  the name of the file requested
-- **request** - initial request line
-- **httpMethod** - HTTP method of the request
+- **errorMessage** - the short report about the error occurred;
+- **code** - matches the HTTP response code number;
+- **requestedFile** -  the name of the file requested;
+- **request** - initial request line;
+- **httpMethod** - HTTP method of the request;
 
