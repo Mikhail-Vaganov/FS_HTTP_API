@@ -18,7 +18,7 @@ HTTP API allows users to manage their files, namely:
 - Unit tests were created by means of PHPUnit and Guzzle frameworks (use composer.json for managing dependences) 
 
 ## Necessary settings
-- request routing uses .htaccess if Apache is running. In case of using in-built Web-server routing.php should be sent as a parameter of terminal during start of the server;
+- request routing uses .htaccess if Apache is running. In case of using built-in web-server routing.php should be sent as a parameter of the command line during the start of the server;
 - xtension=php_fileinfo.dll string should be uncommented in php.ini;
 - working directory should be specified in configuration.php as WORKING_FOLDER constant;
 - max_execution_time value should be set in appropriate value in configuration.php (40 sec. by default);
