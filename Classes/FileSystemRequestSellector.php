@@ -20,6 +20,12 @@ class FileSystemRequestSellector implements iRestRequestProcessorSelector
         $parts = parse_url($url);
 
         $request_parts = explode("/",  $parts['path']);
+        if(count($request_parts)<3)
+            throw new FsapiException('Wrong url',400,null,null,$url);
+
+        if(strtolower($request_parts[1])!="fsapi")
+            throw new FsapiException('Wrong url',400,null,null,$url);
+
         switch (strtolower($request_parts[2]))
         {
             case ('files') : return new FileSystemRequestProcessor();
