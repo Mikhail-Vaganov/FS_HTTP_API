@@ -13,8 +13,9 @@ HTTP API allows users to manage their files, namely:
 
 
 ## Development
-- This project was developed using PhpStorm IDE, Xdebug extention and XAMPP web-server solution pack.
+- This project was developed using PHP 7.0, PhpStorm IDE, Xdebug extention and XAMPP web-server solution pack.
 - The project is provided with test templates for in-built REST Client in PhpStorm.
+- Unit tests were created by means of PHPUnit and Guzzle frameworks (use composer.json for managing dependences) 
 
 ## Necessary settings
 - request routing uses .htaccess if Apache is running. In case of using in-built Web-server routing.php should be sent as a parameter of terminal during start of the server;
