@@ -6,7 +6,7 @@
  * Date: 30-Jan-16
  * Time: 22:18
  */
-include_once 'common.php';
+//include_once 'common.php';
 
 class RequestProcessor
 {

@@ -6,7 +6,7 @@
  * Time: 23:37
  */
 
-include_once 'common.php';
+//include_once 'common.php';
 
 class RootRequestProcessor
 {

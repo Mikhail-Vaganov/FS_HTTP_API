@@ -6,7 +6,7 @@
  * Time: 00:30
  */
 
-include_once 'common.php';
+//include_once 'common.php';
 
 class FileSystemRequestSellector implements iRestRequestProcessorSelector
 {

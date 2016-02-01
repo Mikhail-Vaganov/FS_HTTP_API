@@ -6,7 +6,7 @@
  * Time: 23:36
  */
 
-include_once 'common.php';
+//include_once 'common.php';
 
 interface iRestRequestProcessor
 {

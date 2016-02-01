@@ -6,7 +6,7 @@
  * Date: 29-Jan-16
  * Time: 23:26
  */
-include_once 'common.php';
+//include_once 'common.php';
 
 class FileSystemRequestProcessor extends RequestProcessor implements iRestRequestProcessor
 {

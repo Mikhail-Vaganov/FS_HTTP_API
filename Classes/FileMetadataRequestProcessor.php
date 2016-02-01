@@ -7,7 +7,7 @@
  * Time: 01:21
  */
 
-include_once 'common.php';
+//include_once 'common.php';
 
 class FileMetadataRequestProcessor extends RequestProcessor implements iRestRequestProcessor
 {
