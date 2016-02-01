@@ -59,7 +59,7 @@ http://\<server_host\>:\<server_port\>/fsapi/files/\<file_name\>
   * Method: POST
   * Returns: Uploads a file with name *file_name* using POST semantics.
   * Parameters: **autorename** - defines if the server should rename the uploading file, provided the file with the same name already exists. Values: 1 for true and 0 for false
-  * Request Body: The submitted file from a form or a random contents to fill the created file.
+  * Request Body: The submitted file from a form or a random content to fill the created file.
 
 4. /fsapi/files/\<file_name\>
   * Method: PUT
@@ -103,18 +103,18 @@ This is the standard unit answer to any **metadata** request.
 The basic fields are:
 - **size** - the user-friendly size of the file;
 - **bytes** - size of the files in bytes;
-- **modified** -  the file modifyed date;
+- **modified** -  the file modified date;
 - **path** - the path to the file resource;
 - **name** - the name of the requested file;
 - **extension** - the extension of the requested file;
 - **mimetype** - MIME type of the file's content
 
-Additional fields for imapges are:
+Additional fields for images are:
 - **height** - the height of the requested image
 - **width** - the width of the requested image
 
 ## Exception messages
-If there is an exception, the approptiate HTTP code will be set up in HTTP response.
+If there is an exception, the appropriate HTTP code will be set up in HTTP response.
 The body of such response will contain serialized exception, e.g. in response to the reading metadata of a non-existent file:
 ```
 HTTP/1.1 404 Not Found
@@ -138,7 +138,7 @@ This is the standard error answer to any failed request. The fields are:
 ## Testing
 - Test samples for REST client of PhpStorm can be found in REST_tests folder
 - Another useful application for testing API is [Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?utm_source=chrome-ntp-launcher) Chrome plugin
-- One might use the built-in PHP web server. In this case create **fsapi** folder in the document root of the server  and copy the project in the created directory. Run the web server from comand line:
+- One might use the built-in PHP web server. In this case create **fsapi** folder in the document root of the server  and copy the project in the created directory. Run the web server from the command line:
 ```
 php.exe -S localhost:8080 -t <document_root> <document_root>\fsapi\routing.php
 ```
