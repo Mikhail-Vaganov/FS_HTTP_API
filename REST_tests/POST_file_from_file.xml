@@ -4,7 +4,7 @@
   </option>
   <option name="httpMethod" value="POST" />
   <option name="urlBase" value="http://localhost:8080" />
-  <option name="urlPath" value="/fsapi/files" />
+  <option name="urlPath" value="fsapi/files/test_from_another_file.txt" />
   <option name="headers">
     <list>
       <KeyValuePair>
@@ -20,12 +20,8 @@
   <option name="parameters">
     <list>
       <KeyValuePair>
-        <option name="key" value="file_name" />
-        <option name="value" value="new_file.pdf" />
-      </KeyValuePair>
-      <KeyValuePair>
         <option name="key" value="autorename" />
-        <option name="value" value="true" />
+        <option name="value" value="0" />
       </KeyValuePair>
     </list>
   </option>
@@ -33,6 +29,6 @@
   <option name="haveTextToSend" value="false" />
   <option name="haveFileToSend" value="true" />
   <option name="isFileUpload" value="true" />
-  <option name="textToSend" value="" />
-  <option name="filesToSend" value="D:/Dropbox/MATLAB/FORC_1/forc.m" />
+  <option name="textToSend" value="Lorem ipsum dolor sit amet, consectetur  adipiscing elit. Mauris lacinia libero  sed fermentum mollis. Sed eget tortor  sagittis, posuere lorem ut, sodales lorem.  Nunc mi quam, commodo quis elit nec, rhoncus  lacinia lorem. Nullam commodo tellus quis  tincidunt aliquet. Aliquam rutrum at ante in  commodo. Vestibulum ac auctor diam. Praesent  mattis ipsum nisi. Sed dapibus malesuada  sagittis. Sed vestibulum purus nec tortor  vulputate interdum." />
+  <option name="filesToSend" value="D:/xampp/htdocs/fsapi/start.php" />
 </RestClientRequest>

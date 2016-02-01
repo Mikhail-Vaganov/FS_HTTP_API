@@ -1,0 +1,29 @@
+<RestClientRequest>
+  <option name="biscuits">
+    <list />
+  </option>
+  <option name="httpMethod" value="GET" />
+  <option name="urlBase" value="http://localhost:8080" />
+  <option name="urlPath" value="fsapi/files/" />
+  <option name="headers">
+    <list>
+      <KeyValuePair>
+        <option name="key" value="Accept" />
+        <option name="value" value="*/*" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="Cache-Control" />
+        <option name="value" value="no-cache" />
+      </KeyValuePair>
+    </list>
+  </option>
+  <option name="parameters">
+    <list />
+  </option>
+  <option name="parametersEnabled" value="true" />
+  <option name="haveTextToSend" value="false" />
+  <option name="haveFileToSend" value="false" />
+  <option name="isFileUpload" value="false" />
+  <option name="textToSend" value="Lorem ipsum dolor sit amet, consectetur  adipiscing elit. Mauris lacinia libero  sed fermentum mollis. Sed eget tortor  sagittis, posuere lorem ut, sodales lorem.  Nunc mi quam, commodo quis elit nec, rhoncus  lacinia lorem. Nullam commodo tellus quis  tincidunt aliquet. Aliquam rutrum at ante in  commodo. Vestibulum ac auctor diam. Praesent  mattis ipsum nisi. Sed dapibus malesuada  sagittis. Sed vestibulum purus nec tortor  vulputate interdum." />
+  <option name="filesToSend" value="" />
+</RestClientRequest>
