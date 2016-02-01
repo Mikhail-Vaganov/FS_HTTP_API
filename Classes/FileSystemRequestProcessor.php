@@ -143,7 +143,7 @@ class FileSystemRequestProcessor extends RequestProcessor implements iRestReques
         $file_name = basename($file_path);
 
         if($fileData['error']!=UPLOAD_ERR_OK)
-            throw new FsapiException("Incorrect upload file data: ".GetFileUploadErrorExplanation($fileData['error']) , 404, $file_name, $this->http_method,$this->url);
+            throw new FsapiException("Incorrect upload file data: ".GetFileUploadErrorExplanation($fileData['error']) , 400, $file_name, $this->http_method,$this->url);
 
         $file_path = GetFilePathInWorkingDir($file_name);
 

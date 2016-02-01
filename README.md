@@ -41,6 +41,7 @@ http://\<server_host\>:\<server_port\>/fsapi/files/\<file_name\>
 2. /fsapi/files/\<file_name\>
   * Method: GET
   * Returns: The specified file's content.
+  * Errors: 404 - the file specified hasn't been found
   
   An example of HTTP headers in the response:
   ```
@@ -61,17 +62,20 @@ http://\<server_host\>:\<server_port\>/fsapi/files/\<file_name\>
   * Returns: The metadata of the created file.
   * Parameters: **autorename** - defines if the server should rename the uploading file, provided the file with the same name already exists. Values: 1 for true and 0 for false
   * Request Body: The submitted file from a form or a random content to fill the created file.
+  * Errors: 409 - the file with the same name already exists, 400 - the file name hasn't been specified
 
 4. /fsapi/files/\<file_name\>
   * Updates or creates a file with name *file_name* with the content of the request body
   * Method: PUT
   * Returns: The metadata of the created or updated file.
   * Request Body: The file contents to be uploaded.
+  * Errors: 400 - the file name hasn't been specified
 
 5. /fsapi/files/\<file_name\>
   * Deletes the file specified with *file_name*.
   * Method: DELETE
   * Returns: The metadata of the deleted file.
+  * Errors: 404 - the file specified hasn't been found, 400 - the file name hasn't been specified
 
 
 ### /fsapi/metadata
@@ -86,6 +90,7 @@ http://\<server_host\>:\<server_port\>/fsapi/metadata/\<file_name\>
 2. /fsapi/metadata/\<file_name\>
   * Method: GET
   * Returns: The specified file's metadata. The metadata of images has additional fields of width and height parameters.
+  * Errors: 404 - the file specified hasn't been found
 
 An example of the metadata JSON response:
 ```
