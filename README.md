@@ -1,4 +1,4 @@
-# FS_HTTP_API
+# HTTP API for file system handling
 The test task
 
 The project represents the backend part of a File store server.
