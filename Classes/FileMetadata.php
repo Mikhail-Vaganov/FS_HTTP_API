@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Michael
- * Date: 30-Jan-16
- * Time: 16:12
- */
 class FileMetaData implements JsonSerializable
 {
 
@@ -47,13 +41,6 @@ class FileMetaData implements JsonSerializable
         finfo_close($finfo);
     }
 
-    /**
-     * Specify data which should be serialized to JSON
-     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     * which is a value of any type other than a resource.
-     * @since 5.4.0
-     */
     function jsonSerialize()
     {
         $arr = Array();
