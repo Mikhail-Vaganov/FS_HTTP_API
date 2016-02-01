@@ -21,7 +21,7 @@ HTTP API allows users to manage their files, namely:
 All the maintenance of the file system might be handled using the following RESTful API:
 
 #### /fsapi/files
-Url structure for working with **files** resources:
+Url structure for work with **files** resources:
 
 http://\<server_host\>:\<server_port\>/fsapi/files/\<file_name\>
 
@@ -52,7 +52,7 @@ http://\<server_host\>:\<server_port\>/fsapi/files/\<file_name\>
 
 
 #### /fsapi/metadata
-Url structure for working with **metadata** resources:
+Url structure for work with **metadata** resources:
 
 http://\<server_host\>:\<server_port\>/fsapi/metadata/\<file_name\>
 
