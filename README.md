@@ -27,7 +27,7 @@ HTTP API allows users to manage their files, namely:
 ## HTTP API description
 All the maintenance of the file system might be handled using the following RESTful API:
 
-#### /fsapi/files
+### /fsapi/files
 Url structure for work with **files** resources:
 
 http://\<server_host\>:\<server_port\>/fsapi/files/\<file_name\>
@@ -40,17 +40,29 @@ http://\<server_host\>:\<server_port\>/fsapi/files/\<file_name\>
 2. /fsapi/files/\<file_name\>
   * Method: GET
   * Returns: The specified file's contents.
+  
+  An example of HTTP headers in the response:
+  ```
+  HTTP/1.1 200 OK
+  Date: Mon, 01 Feb 2016 12:30:10 GMT
+  Server: Apache/2.4.18 (Win32) OpenSSL/1.0.2e PHP/7.0.1
+  X-Powered-By: PHP/7.0.1
+  Content-Length: 4334969
+  Content-Disposition: attachment; filename=audio.mp3
+  Keep-Alive: timeout=5, max=100
+  Connection: Keep-Alive
+  Content-Type: audio/mpeg
+  ```
 
 3. /fsapi/files/\<file_name\>
   * Method: POST
   * Returns: Uploads a file with name *file_name* using POST semantics.
-  * Parameters: autorename - define is server should rename the uploading file, if the file with the same name already exists. Values are 1 for true anв 0 for false
+  * Parameters: **autorename** - defines if the server should rename the uploading file, provided the file with the same name already exists. Values: 1 for true and 0 for false
   * Request Body: The submitted file from a form or a random contents to fill the created file.
 
 4. /fsapi/files/\<file_name\>
   * Method: PUT
-  * Returns: Update or create file with name *file_name* with the content of the request body.
-  * Parameters: autorename - define is server should rename the uploaded file, if the file with the same name already exists. Values are 1 for true anв 0 for false.
+  * Returns: Update or create file with name *file_name* with the content of the request body
   * Request Body: The file contents to be uploaded.
 
 5. /fsapi/files/\<file_name\>
@@ -58,7 +70,7 @@ http://\<server_host\>:\<server_port\>/fsapi/files/\<file_name\>
   * Returns: Deletes the file specified with *file_name*.
 
 
-#### /fsapi/metadata
+### /fsapi/metadata
 Url structure for work with **metadata** resources:
 
 http://\<server_host\>:\<server_port\>/fsapi/metadata/\<file_name\>
@@ -71,7 +83,57 @@ http://\<server_host\>:\<server_port\>/fsapi/metadata/\<file_name\>
   * Method: GET
   * Returns: The specified file's metadata. The metadata of images has additional fields like width and height, etc.
 
+An example of a metadata JSON response:
+```
+{
+    "size": "192.69KB",
+    "bytes": 197312,
+    "modified": "Sunday 2nd of August 2015 12:26:21 PM",
+    "path": "local_store\\image.jpg",
+    "name": "image.jpg",
+    "extension": "JPG",
+    "mimetype": "image/jpeg",
+    "height": 915,
+    "width": 855
+}
+```
+This is the standard unit answer to any **metadata** request. 
 
+The basic fields are:
+- **size** - the user-friendly size of the file;
+- **bytes** - size of the files in bytes;
+- **modified** -  the file modifyed date;
+- **path** - the path to the file resource;
+- **name** - the name of the requested file;
+- **extension** - the extension of the requested file;
+- **mimetype** - MIME type of the file's content
 
-The path for file managing requests is fsapi/files.
-The main request parameter is the file_name.
+Additional fields for imapges are:
+- **height** - the height of the requested image
+- **width** - the width of the requested image
+
+## Exception messages
+If there is an exception, the approptiate HTTP code will be set up in HTTP response.
+The body of such response will contain serialized exception, e.g. in response to the reading metadata of a non-existent file:
+```
+HTTP/1.1 404 Not Found
+```
+```
+{
+    "errorMessage": "File doesn't exist",
+    "code": 404,
+    "requestedFile": "file.txt",
+    "request": "/fsapi/metadata/file.txt",
+    "httpMethod": "GET"
+}
+```
+This is the standard error answer to any failed request. The fields are:
+- **errorMessage** - the short report about the error occurred;
+- **code** - matches the HTTP response code number;
+- **requestedFile** -  the name of the file requested;
+- **request** - initial request line;
+- **httpMethod** - HTTP method of the request;
+
+## Testing
+- Test samples for REST client of PhpStorm can be found in REST_tests folder
+- Another useful application for testing API is Postman Chrome plugin
