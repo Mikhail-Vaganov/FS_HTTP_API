@@ -134,3 +134,6 @@ This is the standard error answer to any failed request. The fields are:
 - **request** - initial request line;
 - **httpMethod** - HTTP method of the request;
 
+## Testing
+- Test samples for REST client in PhpStorm can be found in REST_tests folder
+- Another useful application for testing API is Postman Chrome plugin
