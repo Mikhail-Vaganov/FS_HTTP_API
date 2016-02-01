@@ -116,6 +116,9 @@ Additional fields for imapges are:
 If there is an exception, the approptiate HTTP code will be set up in HTTP response.
 The body of such response will contain serialized exception, e.g. in response to the reading metadata of a non-existent file:
 ```
+HTTP/1.1 404 Not Found
+```
+```
 {
     "errorMessage": "File doesn't exist",
     "code": 404,
