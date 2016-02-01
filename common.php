@@ -13,6 +13,7 @@ require_once 'Interfaces'.DIRECTORY_SEPARATOR.'iRestRequestProcessorSelector.php
 require_once 'Classes'.DIRECTORY_SEPARATOR.'RequestProcessor.php';
 require_once 'Classes'.DIRECTORY_SEPARATOR.'FileSystemRequestSellector.php';
 require_once 'Classes'.DIRECTORY_SEPARATOR.'FileSystemRequestProcessor.php';
+require_once 'Classes'.DIRECTORY_SEPARATOR.'FileMetadataRequestProcessor.php';
 require_once 'Classes'.DIRECTORY_SEPARATOR.'RootRequestProcessor.php';
 require_once 'Classes'.DIRECTORY_SEPARATOR.'FsapiException.php';
 require_once 'Classes'.DIRECTORY_SEPARATOR.'FileMetaData.php';
