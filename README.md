@@ -13,8 +13,8 @@ HTTP API allows users to manage their files, namely:
 
 
 ## Development
-- This project was developed using PHP 7.0, PhpStorm IDE, Xdebug extention and XAMPP web-server solution pack.
-- The project is provided with test templates for in-built REST Client in PhpStorm.
+- This project was developed using PHP 7.0.1, PhpStorm IDE, Xdebug extention and XAMPP web-server solution pack.
+- The project is provided with test templates for built-in REST Client of PhpStorm.
 - Unit tests were created by means of PHPUnit and Guzzle frameworks (use composer.json for managing dependences) 
 
 ## Necessary settings
@@ -142,3 +142,12 @@ This is the standard error answer to any failed request. The fields are:
 ```
 php.exe -S localhost:8080 -t <document_root> <document_root>\fsapi\routing.php
 ```
+- There are some important unit tests which were created for the main features of the API:
+  - FilesHTTPProcessorTest->testSuccessFileGet
+  - FilesHTTPProcessorTest->testSuccessFilePost
+  - FilesHTTPProcessorTest->testSuccessFilePutCreate
+  - FilesHTTPProcessorTest->testSuccessFilePutUpdate
+  - FilesHTTPProcessorTest->testSuccessFileDelete
+  - FileMetadataHTTPRequestTest->testMatchNumberOfFilesInDirectoryAndInAnswer
+  - FileMetadataHTTPRequestTest->testFieldsInResponseToFileMetadata
+  
