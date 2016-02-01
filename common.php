@@ -15,7 +15,7 @@ require_once 'Classes'.DIRECTORY_SEPARATOR.'FileSystemRequestSellector.php';
 require_once 'Classes'.DIRECTORY_SEPARATOR.'FileSystemRequestProcessor.php';
 require_once 'Classes'.DIRECTORY_SEPARATOR.'RootRequestProcessor.php';
 require_once 'Classes'.DIRECTORY_SEPARATOR.'FsapiException.php';
-
+require_once 'Classes'.DIRECTORY_SEPARATOR.'FileMetaData.php';
 
 spl_autoload_extensions(".php");
 spl_autoload_register();
@@ -37,11 +37,12 @@ function fatal_handler()
         $errfile = $error["file"];
         $errline = $error["line"];
         $errstr  = $error["message"];
-    }
+
     error_log($errstr);
     error_log($errno);
     error_log($errfile);
     error_log($errline);
+    }
 }
 
 function ExceptionErrorHandler($errNumber, $errStr, $errFile, $errLine )
