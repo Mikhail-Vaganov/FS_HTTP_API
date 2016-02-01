@@ -136,4 +136,4 @@ This is the standard error answer to any failed request. The fields are:
 
 ## Testing
 - Test samples for REST client of PhpStorm can be found in REST_tests folder
-- Another useful application for testing API is Postman Chrome plugin
+- Another useful application for testing API is [Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?utm_source=chrome-ntp-launcher) Chrome plugin
