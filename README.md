@@ -44,14 +44,14 @@ http://\<server_host\>:\<server_port\>/fsapi/files/\<file_name\>
   An example of HTTP headers in the response:
   ```
   HTTP/1.1 200 OK
-  Date: Mon, 01 Feb 2016 12:28:10 GMT
+  Date: Mon, 01 Feb 2016 12:30:10 GMT
   Server: Apache/2.4.18 (Win32) OpenSSL/1.0.2e PHP/7.0.1
   X-Powered-By: PHP/7.0.1
-  Content-Length: 25
-  Content-Disposition: attachment; filename=test.txt
+  Content-Length: 4334969
+  Content-Disposition: attachment; filename=audio.mp3
   Keep-Alive: timeout=5, max=100
   Connection: Keep-Alive
-  Content-Type: text/plain;charset=UTF-8
+  Content-Type: audio/mpeg
   ```
 
 3. /fsapi/files/\<file_name\>
