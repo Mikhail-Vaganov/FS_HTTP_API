@@ -60,7 +60,7 @@ class FileMetaData implements JsonSerializable
         $arr['size'] = $this->size;
         $arr['bytes'] = $this->bytes;
         $arr['modified'] = $this->modified;
-        $arr['path'] = basename(WORKING_FOLDER).DIRECTORY_SEPARATOR.rawurldecode($this->name);
+        $arr['path'] = "fsapi/files/".rawurldecode($this->name);
         $arr['name'] = rawurldecode($this->name);
         $arr['extension'] = $this->extension;
         $arr['mimetype'] = $this->mimetype;
