@@ -51,7 +51,7 @@ class FilesHTTPProcessorTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(404, $response->getStatusCode());
     }
 
-    public function testFileDelete200()
+    public function testSuccessFileDelete()
     {
         $file_name = "unit_test_delete.txt";
         $file_path = WORKING_FOLDER.DIRECTORY_SEPARATOR.$file_name;
@@ -62,7 +62,7 @@ class FilesHTTPProcessorTest extends PHPUnit_Framework_TestCase
         $this->assertFileNotExists($file_path, "File hasn't been deleted!");
     }
 
-    public function testFileGet200()
+    public function testSuccessFileGet()
     {
         $file_name = "unit_test_create.txt";
         $file_path = WORKING_FOLDER.DIRECTORY_SEPARATOR.$file_name;
@@ -150,7 +150,7 @@ class FilesHTTPProcessorTest extends PHPUnit_Framework_TestCase
         $this->assertFileNotExists($file_name_new, "File hasn't been renamed and created!");
     }
 
-    public function testFilePutUpdate()
+    public function testSuccessFilePutUpdate()
     {
         $file_name = "unit_test_put_update.txt";
         $file_path = WORKING_FOLDER.DIRECTORY_SEPARATOR.$file_name;
@@ -173,7 +173,7 @@ class FilesHTTPProcessorTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($test_line, file_get_contents($file_path));
     }
 
-    public function testFilePutCreate()
+    public function testSuccessFilePutCreate()
     {
         $file_name = "unit_test_put_create.txt";
         $file_path = WORKING_FOLDER.DIRECTORY_SEPARATOR.$file_name;
