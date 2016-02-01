@@ -22,7 +22,7 @@ HTTP API allows users to manage their files, namely:
 - xtension=php_fileinfo.dll string should be uncommented in php.ini;
 - working directory should be specified in configuration.php as WORKING_FOLDER constant;
 - max_execution_time value should be set at the appropriate value in configuration.php (40 sec. by default);
-- the current project should be placed in **fsapi** directory in document root of the web server.
+- the current project should be placed in **fsapi** directory in the document root of the web server.
 
 
 ## HTTP API description
