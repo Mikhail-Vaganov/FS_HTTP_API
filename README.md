@@ -40,7 +40,7 @@ http://\<server_host\>:\<server_port\>/fsapi/files/\<file_name\>
   
 2. /fsapi/files/\<file_name\>
   * Method: GET
-  * Returns: The specified file's contents.
+  * Returns: The specified file's content.
   
   An example of HTTP headers in the response:
   ```
@@ -56,19 +56,22 @@ http://\<server_host\>:\<server_port\>/fsapi/files/\<file_name\>
   ```
 
 3. /fsapi/files/\<file_name\>
+  * Uploads a file with name *file_name* using POST semantics.
   * Method: POST
-  * Returns: Uploads a file with name *file_name* using POST semantics.
+  * Returns: The metadata of the created file.
   * Parameters: **autorename** - defines if the server should rename the uploading file, provided the file with the same name already exists. Values: 1 for true and 0 for false
   * Request Body: The submitted file from a form or a random content to fill the created file.
 
 4. /fsapi/files/\<file_name\>
+  * Updates or creates a file with name *file_name* with the content of the request body
   * Method: PUT
-  * Returns: Update or create file with name *file_name* with the content of the request body
+  * Returns: The metadata of the created or updated file.
   * Request Body: The file contents to be uploaded.
 
 5. /fsapi/files/\<file_name\>
+  * Deletes the file specified with *file_name*.
   * Method: DELETE
-  * Returns: Deletes the file specified with *file_name*.
+  * Returns: The metadata of the deleted file.
 
 
 ### /fsapi/metadata
@@ -82,9 +85,9 @@ http://\<server_host\>:\<server_port\>/fsapi/metadata/\<file_name\>
   
 2. /fsapi/metadata/\<file_name\>
   * Method: GET
-  * Returns: The specified file's metadata. The metadata of images has additional fields like width and height, etc.
+  * Returns: The specified file's metadata. The metadata of images has additional fields of width and height parameters.
 
-An example of a metadata JSON response:
+An example of the metadata JSON response:
 ```
 {
     "size": "192.69KB",
@@ -114,7 +117,7 @@ Additional fields for images are:
 - **width** - the width of the requested image
 
 ## Exception messages
-If there is an exception, the appropriate HTTP code will be set up in HTTP response.
+If there is an exception, the appropriate HTTP code will be set up in the HTTP response.
 The body of such response will contain serialized exception, e.g. in response to the reading metadata of a non-existent file:
 ```
 HTTP/1.1 404 Not Found
@@ -132,7 +135,7 @@ This is the standard error answer to any failed request. The fields are:
 - **errorMessage** - the short report about the error occurred;
 - **code** - matches the HTTP response code number;
 - **requestedFile** -  the name of the file requested;
-- **request** - initial request line;
+- **request** - the initial request line;
 - **httpMethod** - HTTP method of the request;
 
 ## Testing
