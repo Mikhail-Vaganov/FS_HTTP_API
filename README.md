@@ -71,7 +71,22 @@ http://\<server_host\>:\<server_port\>/fsapi/metadata/\<file_name\>
   * Method: GET
   * Returns: The specified file's metadata. The metadata of images has additional fields like width and height, etc.
 
+## Exception messages
+If there is an exception, the approptiate HTTP code will be set up in HTTP response.
+The body of such response will contain serialized exception, e.g. in response to the reading metadata of a non-existent file:
+```
+{
+    "errorMessage": "File doesn't exist",
+    "code": 404,
+    "requestedFile": "file.txt",
+    "request": "/fsapi/metadata/file.txt",
+    "httpMethod": "GET"
+}
+```
+This is the standard error answer to any failed request. The fields are:
+- **errorMessage** - the short report about the error occurred
+- **code** - matches the HTTP response code number
+- **requestedFile** -  the name of the file requested
+- **request** - initial request line
+- **httpMethod** - HTTP method of the request
 
-
-The path for file managing requests is fsapi/files.
-The main request parameter is the file_name.
