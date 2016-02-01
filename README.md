@@ -138,7 +138,7 @@ This is the standard error answer to any failed request. The fields are:
 ## Testing
 - Test samples for REST client of PhpStorm can be found in REST_tests folder
 - Another useful application for testing API is [Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?utm_source=chrome-ntp-launcher) Chrome plugin
-- One might use the built-in PHP web server. In this case create in the document root of the server **fsapi** folder and copy the project in this directory. From comand line run the web server:
+- One might use the built-in PHP web server. In this case create **fsapi** folder in the document root of the server  and copy the project in the created directory. Run the web server from comand line:
 ```
 php.exe -S localhost:8080 -t <document_root> <document_root>\fsapi\routing.php
 ```
