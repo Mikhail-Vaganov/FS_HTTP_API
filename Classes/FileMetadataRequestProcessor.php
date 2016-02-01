@@ -22,7 +22,7 @@ class FileMetadataRequestProcessor extends RequestProcessor implements iRestRequ
 
     public function post()
     {
-        throw new FsapiException("POST processor is not implemented",501,null,$this->http_method,$this->url);
+        throw new FsapiException("POST processor hasn't been implemented",501,null,$this->http_method,$this->url);
     }
 
     public function get()
@@ -40,12 +40,12 @@ class FileMetadataRequestProcessor extends RequestProcessor implements iRestRequ
 
     public function put()
     {
-        throw new FsapiException("PUT processor is not implemented",501,null,$this->http_method,$this->url);
+        throw new FsapiException("PUT processor hasn't been implemented",501,null,$this->http_method,$this->url);
     }
 
     public function delete()
     {
-        throw new FsapiException("DELETE processor is not implemented",501,null,$this->http_method,$this->url);
+        throw new FsapiException("DELETE processor hasn't been implemented",501,null,$this->http_method,$this->url);
     }
 
     /**
