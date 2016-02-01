@@ -34,7 +34,7 @@ class FsapiException extends Exception implements JsonSerializable
         $answer = Array();
         $answer['errorMessage']=$this->message;
         $answer['code']=$this->code;
-        $answer['requestedFile']=$this->file_name;
+        $answer['requestedFile']=rawurldecode($this->file_name);
         $answer['request']=$this->request_url;
         $answer['httpMethod']=$this->http_method;
         return $answer;

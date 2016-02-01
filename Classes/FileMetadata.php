@@ -23,10 +23,10 @@ class FileMetaData implements JsonSerializable
     public function __construct(string $filePath)
     {
         $this->modified =date('l jS \of F Y h:i:s A', filemtime($filePath));
-        $this->path=basename(WORKING_FOLDER).DIRECTORY_SEPARATOR.basename($filePath);
+        $this->name=basename($filePath);
+        $this->path=basename(WORKING_FOLDER).DIRECTORY_SEPARATOR.$this->name;
         $this->bytes=filesize($filePath);
         $this->size=HumanFilesize($this->bytes,2);
-        $this->name=basename($filePath);
 
         $extension =strtoupper(pathinfo($filePath, PATHINFO_EXTENSION));
         $this->extension=$extension;
@@ -60,8 +60,8 @@ class FileMetaData implements JsonSerializable
         $arr['size'] = $this->size;
         $arr['bytes'] = $this->bytes;
         $arr['modified'] = $this->modified;
-        $arr['path'] = $this->path;
-        $arr['name'] = $this->name;
+        $arr['path'] = basename(WORKING_FOLDER).DIRECTORY_SEPARATOR.rawurldecode($this->name);
+        $arr['name'] = rawurldecode($this->name);
         $arr['extension'] = $this->extension;
         $arr['mimetype'] = $this->mimetype;
 

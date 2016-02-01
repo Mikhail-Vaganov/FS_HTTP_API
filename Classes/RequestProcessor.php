@@ -22,7 +22,7 @@ class RequestProcessor
     protected function SendResponse($answer)
     {
         header('Content-type: application/json');
-        $json_string=json_encode($answer, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES);
+        $json_string=json_encode($answer, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES| JSON_UNESCAPED_UNICODE);
         $last_er= json_last_error();
         if($last_er!=JSON_ERROR_NONE)
            SendError(new Exception("Error has occurred during serialization in JSON. ". GetJsonErrorExplanation($last_er)));

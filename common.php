@@ -55,13 +55,13 @@ function SendError (Exception $exception)
     if(is_a($exception,"FsapiException"))
     {
         http_response_code($exception->getCode());
-        echo json_encode($exception, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        echo json_encode($exception, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES| JSON_UNESCAPED_UNICODE);
     }
     else
     {
         $fsapiEx=new FsapiException($exception->getMessage(), 500, null, $_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
         http_response_code($fsapiEx->getCode());
-        echo json_encode($fsapiEx,JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        echo json_encode($fsapiEx,JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES| JSON_UNESCAPED_UNICODE);
     }
 }
 
