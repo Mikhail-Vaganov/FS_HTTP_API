@@ -21,8 +21,8 @@ HTTP API allows users to manage their files, namely:
 - the request routing mechanism uses .htaccess file in case Apache server is running. In case of using built-in web-server routing.php should be sent as a parameter of the command line during the start of the server;
 - xtension=php_fileinfo.dll string should be uncommented in php.ini;
 - working directory should be specified in configuration.php as WORKING_FOLDER constant;
-- max_execution_time value should be set in appropriate value in configuration.php (40 sec. by default);
-- the current project should be placed in **fsapi** directory in root folder of the web-server.
+- max_execution_time value should be set at the appropriate value in configuration.php (40 sec. by default);
+- the current project should be placed in **fsapi** directory in document root of the web server.
 
 
 ## HTTP API description
