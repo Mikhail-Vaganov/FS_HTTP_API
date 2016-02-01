@@ -27,7 +27,7 @@ HTTP API allows users to manage their files, namely:
 ## HTTP API description
 All the maintenance of the file system might be handled using the following RESTful API:
 
-#### /fsapi/files
+### /fsapi/files
 Url structure for work with **files** resources:
 
 http://\<server_host\>:\<server_port\>/fsapi/files/\<file_name\>
@@ -40,17 +40,29 @@ http://\<server_host\>:\<server_port\>/fsapi/files/\<file_name\>
 2. /fsapi/files/\<file_name\>
   * Method: GET
   * Returns: The specified file's contents.
+  
+  An example of HTTP headers in the response:
+  ```
+  HTTP/1.1 200 OK
+  Date: Mon, 01 Feb 2016 12:28:10 GMT
+  Server: Apache/2.4.18 (Win32) OpenSSL/1.0.2e PHP/7.0.1
+  X-Powered-By: PHP/7.0.1
+  Content-Length: 25
+  Content-Disposition: attachment; filename=test.txt
+  Keep-Alive: timeout=5, max=100
+  Connection: Keep-Alive
+  Content-Type: text/plain;charset=UTF-8
+  ```
 
 3. /fsapi/files/\<file_name\>
   * Method: POST
   * Returns: Uploads a file with name *file_name* using POST semantics.
-  * Parameters: autorename - define is server should rename the uploading file, if the file with the same name already exists. Values are 1 for true anв 0 for false
+  * Parameters: **autorename** - defines if the server should rename the uploading file, provided the file with the same name already exists. Values: 1 for true and 0 for false
   * Request Body: The submitted file from a form or a random contents to fill the created file.
 
 4. /fsapi/files/\<file_name\>
   * Method: PUT
-  * Returns: Update or create file with name *file_name* with the content of the request body.
-  * Parameters: autorename - define is server should rename the uploaded file, if the file with the same name already exists. Values are 1 for true anв 0 for false.
+  * Returns: Update or create file with name *file_name* with the content of the request body
   * Request Body: The file contents to be uploaded.
 
 5. /fsapi/files/\<file_name\>
@@ -58,7 +70,7 @@ http://\<server_host\>:\<server_port\>/fsapi/files/\<file_name\>
   * Returns: Deletes the file specified with *file_name*.
 
 
-#### /fsapi/metadata
+### /fsapi/metadata
 Url structure for work with **metadata** resources:
 
 http://\<server_host\>:\<server_port\>/fsapi/metadata/\<file_name\>
