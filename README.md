@@ -16,6 +16,13 @@ HTTP API allows users to manage their files, namely:
 - This project was developed using PhpStorm IDE, Xdebug extention and XAMPP web-server solution pack.
 - The project is provided with test templates for in-built REST Client in PhpStorm.
 
+## Necessary settings
+- request routing uses .htaccess if Apache is running. In case of using in-built Web-server routing.php should be sent as a parameter of terminal during start of the server;
+- xtension=php_fileinfo.dll string should be uncommented in php.ini;
+- working directory should be specified in configuration.php as WORKING_FOLDER constant;
+- max_execution_time value should be set in appropriate value in configuration.php (40 sec. by default);
+- the current project should be placed in **fsapi** directory in root folder of the web-server.
+
 
 ## HTTP API description
 All the maintenance of the file system might be handled using the following RESTful API:
