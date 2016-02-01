@@ -125,7 +125,7 @@ class FileSystemRequestProcessor extends RequestProcessor implements iRestReques
             if ($file == '.' || $file == '..')
                 continue;
             else
-                $filesToAnswer[] = $file;
+                $filesToAnswer[] = rawurldecode($file);
 
         http_response_code(200);
         $this->SendResponse($filesToAnswer);
