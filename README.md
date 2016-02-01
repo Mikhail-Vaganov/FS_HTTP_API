@@ -12,6 +12,10 @@ HTTP API allows users to manage their files, namely:
 * Get metadata of a file.
 
 
+## Development
+- This project was developed using PhpStorm IDE, Xdebug extention and XAMPP web-server solution pack.
+- The project is provided with test templates for in-built REST Client in PhpStorm.
+
 
 ## HTTP API description
 All the maintenance of the file system might be handled using the following RESTful API:
@@ -24,7 +28,7 @@ http://\<server_host\>:\<server_port\>/fsapi/files/\<file_name\>
 
 1. /fsapi/files
   * Method: GET
-  * Returns: The list of all files stored on the server.
+  * Returns: The list of all the files stored on the server in the working directory.
   
 2. /fsapi/files/\<file_name\>
   * Method: GET
@@ -46,6 +50,18 @@ http://\<server_host\>:\<server_port\>/fsapi/files/\<file_name\>
   * Method: DELETE
   * Returns: Deletes the file specified with *file_name*.
 
+
+Url structure for working with **metadata** resources:
+
+http://\<server_host\>:\<server_port\>/fsapi/metadata/\<file_name\>
+
+1. /fsapi/metadata
+  * Method: GET
+  * Returns: The metadatas of all the files stored on the server in the working directory.
+  
+2. /fsapi/metadata/\<file_name\>
+  * Method: GET
+  * Returns: The specified file's metadata. The metadata of images has additional fields like width and height, etc.
 
 
 
