@@ -19,7 +19,7 @@ HTTP API allows users to manage their files, namely:
 ## Necessary settings
 - **xtension=php_fileinfo.dll** or \(fileinfo.so\) string should be uncommented in **php.ini**;
 - working directory should be specified in **configuration.php** as WORKING_FOLDER constant;
-- local server port should be specified in **configuration.php** as S_PORT constant for the succeful running of unit tests;
+- local server port should be specified in **configuration.php** as S_PORT constant for the successful running of unit tests;
 - max_execution_time value should be set at the appropriate value in configuration.php (40 sec. by default);
 - the current project should be placed in **fsapi** directory in the document root of the web server;
 - the request routing mechanism uses .htaccess file in case Apache server is running. In case of using built-in web-server routing.php should be sent as a parameter of the command line during the start of the server.
