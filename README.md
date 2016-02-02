@@ -1,5 +1,4 @@
-# HTTP API for file system handling
-The test task
+# HTTP API for the file system maintenance
 
 The project represents the backend part of a kind of File store server.
 HTTP API allows users to manage their files, namely:
