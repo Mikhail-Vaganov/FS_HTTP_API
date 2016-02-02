@@ -1,4 +1,4 @@
-# HTTP API for the file system maintenance
+# HTTP API for the file system management
 
 The project represents the backend part of a kind of File store server.
 HTTP API allows users to manage their files, namely:
