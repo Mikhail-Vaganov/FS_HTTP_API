@@ -7,6 +7,7 @@
  */
 
 define('WORKING_FOLDER', 'c:'.DIRECTORY_SEPARATOR.'local_store');
+define('S_PORT', 8080);
 
 ini_set('max_execution_time', 60);
 ini_set("log_errors", 1);

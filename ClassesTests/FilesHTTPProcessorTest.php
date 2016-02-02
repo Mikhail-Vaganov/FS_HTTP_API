@@ -9,7 +9,7 @@ class FilesHTTPProcessorTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->client = new GuzzleHttp\Client([
-            'base_uri' => 'http://localhost:8080'
+            'base_uri' => 'http://localhost:'.S_PORT
         ]);
     }
 
