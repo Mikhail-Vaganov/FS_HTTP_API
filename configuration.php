@@ -6,7 +6,7 @@
  * Time: 01:56
  */
 
-define('WORKING_FOLDER', 'c:'.DIRECTORY_SEPARATOR.'local_store');
+define('WORKING_FOLDER', DIRECTORY_SEPARATOR.'local_store');
 define('S_PORT', 8080);
 
 ini_set('max_execution_time', 60);
