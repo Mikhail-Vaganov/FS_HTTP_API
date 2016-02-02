@@ -158,3 +158,13 @@ php.exe -S localhost:8080 -t <document_root> <document_root>\fsapi\routing.php
   - FileMetadataHTTPRequestTest->testMatchNumberOfFilesInDirectoryAndInAnswer
   - FileMetadataHTTPRequestTest->testFieldsInResponseToFileMetadata
   
+## Further development
+- It will be useful to implement support of the gzip-encoded responses. In order to receive a gzip-encoded response one will have to fill two request headers:
+```
+  Accept-Encoding: gzip
+  User-Agent: my program (gzip)
+```
+      On the server side the "gzencode* function will be used.
+  
+- In order to implement authentication and authorization to this API, it is proposed to use a database, which will contain user rights information. All the necessary fields, e.g. user_name, password, etc, should be sent in a query string but not in the request body. In the case of using such database, we can also restrict user access to different files and folders even on different servers.
+- SSL might be used with an appropriate web server and certificates.
