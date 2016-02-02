@@ -14,7 +14,7 @@ HTTP API allows users to manage their files, namely:
 ## Development
 - This project was developed using PHP 7.0.1, PhpStorm IDE, Xdebug extention and XAMPP web-server solution pack.
 - The project is provided with test templates for built-in REST Client of PhpStorm.
-- Unit tests were created by means of PHPUnit and Guzzle frameworks (use composer.json for managing dependences) 
+- Unit tests were created by means of PHPUnit and Guzzle frameworks (use composer.json for managing dependences) .
 
 ## Necessary settings
 - **xtension=php_fileinfo.dll** or \(fileinfo.so\) string should be uncommented in **php.ini**;
