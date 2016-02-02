@@ -66,13 +66,6 @@ class FileSystemRequestProcessor extends RequestProcessor implements iRestReques
         else
         {
             $file_name=$request_parts[3];
-
-            parse_str($parts['query']??"", $query);
-            $gzip= $query['gzip'] ?? false;
-
-            if($gzip)
-                $file_name=$this->PrepareGzipFile($file_name);
-
             $this->SendFile($file_name);
         }
     }
@@ -128,26 +121,6 @@ class FileSystemRequestProcessor extends RequestProcessor implements iRestReques
 
         http_response_code(200);
         $this->SendResponse($filesToAnswer);
-    }
-
-
-    private function PrepareGzipFile($file_name) :string
-    {
-        $file_path = GetFilePathInWorkingDir($file_name);
-
-        if(!file_exists($file_path))
-            throw new FsapiException("File not found", 404, $file_name, $this->http_method,$this->url);
-
-
-        $file_name_gzip = $file_name.'.gz';
-        $file_path_gzip = GetFilePathInWorkingDir($file_name_gzip);
-
-        $data = implode("", file($file_path));
-        $gzdata = gzencode($data, 9);
-        $fp = fopen($file_path_gzip, "w");
-        fwrite($fp, $gzdata);
-        fclose($fp);
-        return $file_name_gzip;
     }
 
     private function SendFile($file_name)
